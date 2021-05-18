@@ -1,26 +1,38 @@
-using Grpc.Core;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Grpc.Core;
+using LobbyServer.Grpc;
+using Microsoft.Extensions.Logging;
 
-namespace LobbyServer
+namespace LobbyServer.Services
 {
-    public class LobbyService : Lobby.LobbyBase
-    {/*
+    public class LobbyService : Grpc.LobbyService.LobbyServiceBase
+    {
         private readonly ILogger<LobbyService> _logger;
         public LobbyService(ILogger<LobbyService> logger)
         {
             _logger = logger;
         }
 
-        public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
+
+        public override async Task<AuthenticateResponse> Authenticate(AuthenticateRequest request, ServerCallContext context)
         {
-            return Task.FromResult(new HelloReply
+            return new AuthenticateResponse
             {
-                Message = "Hello " + request.Name
-            });
-        }*/
+
+            };
+        }
+
+        public override async Task<MessageResponse> SendMessage(MessageRequest request, ServerCallContext context)
+        {
+            return new MessageResponse
+            {
+
+            };
+        }
+
+        public override async Task receiveMessageStream(receiveMessageStreamRequest request, IServerStreamWriter<receiveMessageStreamResponse> responseStream, ServerCallContext context)
+        {
+            return;
+        }
     }
 }
