@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option csharp_namespace = "Lobby";
+
+service Lobby {
+  rpc Authenticate (AuthenticateRequest) returns (AuthenticateResponse);
+  rpc SendMessage (MessageRequest) returns (MessageResponse);
+  rpc receiveMessageStream (receiveMessageStreamRequest) returns (stream receiveMessageStreamResponse);
+}
+
+message AuthenticateRequest {
+  string username = 1;
+  string id1 = 2;
+  string id2 = 3;
+  string id3 = 4;
+  string id4 = 5;
+}
+
+message AuthenticateResponse {
+  string token = 1;
+}
+
+
+message MessageRequest {
+  string token = 1;
+}
+
+message MessageResponse {
+}
+
+
+message receiveMessageStreamRequest {
+  string token = 1;
+}
+
+message receiveMessageStreamResponse {
+  string message = 1;
+}
