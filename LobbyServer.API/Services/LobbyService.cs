@@ -3,22 +3,21 @@ using Grpc.Core;
 using LobbyServer.Grpc;
 using Microsoft.Extensions.Logging;
 
-namespace LobbyServer.Services
+namespace LobbyServer.API.Services
 {
     public class LobbyService : Grpc.LobbyService.LobbyServiceBase
     {
         private readonly ILogger<LobbyService> _logger;
+
         public LobbyService(ILogger<LobbyService> logger)
         {
             _logger = logger;
         }
 
-
         public override async Task<AuthenticateResponse> Authenticate(AuthenticateRequest request, ServerCallContext context)
         {
             return new AuthenticateResponse
             {
-
             };
         }
 
@@ -26,7 +25,6 @@ namespace LobbyServer.Services
         {
             return new MessageResponse
             {
-
             };
         }
 
